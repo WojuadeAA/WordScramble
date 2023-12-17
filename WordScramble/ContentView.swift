@@ -22,9 +22,8 @@ struct ContentView: View {
                 Section{
                     TextField("Enter Your word", text: $newWord)
                         .textInputAutocapitalization(.never)
-                       
+                        .autocorrectionDisabled()
                 }
-                
                 Section {
                     ForEach(usedWords, id: \.self){word in
                         HStack{
@@ -35,7 +34,6 @@ struct ContentView: View {
                     }
                 }
             }
-            .listStyle(<#T##style: ListStyle##ListStyle#>)
             .navigationTitle(rootWord)
             .navigationBarTitleDisplayMode(.large)
             .onSubmit(addNewWord)
@@ -88,15 +86,15 @@ struct ContentView: View {
         
         guard isOriginal(word: answer)
         else{
-            wordError(title: "word used already", message: "Be more Original")
+            wordError(title: "word used already", message: "Be more Original😑")
             return
         }
         guard isRealEnglishWord(word: answer) else {
-            wordError(title: "Word not recognized", message: "You can't just make the up you know")
+            wordError(title: "Word not recognized", message: "You can't just make the words up you know😂?")
         return
         }
         guard isPossibleWord(word: answer) else {
-            wordError(title: "Word not possible", message: "You can't spell \(newWord) from \(rootWord)")
+            wordError(title: "Word not possible", message: "You can't spell \(newWord) from \(rootWord)😏")
        return
         }
         
